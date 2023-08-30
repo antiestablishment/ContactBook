@@ -1,20 +1,63 @@
-// ContactBook.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
+
+
+void makeContactDirectory() {
+    // Runs first to:
+        // 1. Check to see if a directory exists.
+        // 2. If not, make one.
+}
+
+void addContact() {
+
+
+    char first_Name[128];
+    char last_Name[128];
+    char email_Address[256];
+    char phone_Number[20];
+    char home_Address[256];
+    char whole_Name[257];
+
+    printf("Please enter the first name of the contact: ");
+    scanf_s("%s", first_Name, 128);
+    printf("\n");
+
+    printf("Please enter the last name of the contact: ");
+    scanf_s("%s", last_Name, 128);
+    printf("\n");
+
+    printf("Please enter the email address of the contact: ");
+    scanf_s("%s", email_Address, 256);
+    printf("\n");
+
+    printf("Please enter the phone number of the contact: ");
+    scanf_s("%s", phone_Number, 20);
+    printf("\n");
+
+    printf("Please enter the home address of the contact: ");
+    scanf_s("%s", home_Address, 256);
+    printf("\n");
+
+    strcat_s(whole_Name, last_Name);
+    strcat_s(whole_Name, first_Name);
+    char buffer[257];
+    snprintf(buffer, sizeof(buffer), "%s.txt", whole_Name);
+
+    FILE* contact_File;
+    fopen_s(&contact_File, buffer, "w+");
+    if (contact_File == NULL) {
+        fprintf(contact_File, "First Name: %s\n", first_Name);
+        fprintf(contact_File, "Last Name: %s\n", last_Name);
+        fprintf(contact_File, "Email Address: %s\n", email_Address);
+        fprintf(contact_File, "Phone Number: %s\n", phone_Number);
+        fprintf(contact_File, "Home Address: %s\n", home_Address);
+    }
+
+}
 
 int main()
 {
-    printf("Hello World!\n");
+    addContact();
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
