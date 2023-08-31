@@ -1,2 +1,2 @@
 # ContactBook
-A rudimentary CLI contact book created using C++.
+A rudimentary CLI contact book for windows machines created using C.
